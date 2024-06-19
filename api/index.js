@@ -1,4 +1,15 @@
 import express from "express";
+import mongoose from "mongoose";
+
+mongoose
+  .connect(
+    "mongodb+srv://sourav:sourav@mern-project.h52925b.mongodb.net/mern-project?retryWrites=true&w=majority&appName=mern-project"
+  )
+  .then(() => {
+    console.log("Connected to MongoDB!");
+  }).catch((err)=>{
+    console.log(err)
+  })
 
 const app = express();
 app.listen(3000, () => {
