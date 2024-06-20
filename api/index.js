@@ -1,9 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.route.js";
+import authRouter from "./routes/auth.route.js";
 mongoose
   .connect(
-    "mongodb+srv://sourav:sourav@mern-project.h52925b.mongodb.net/mern-project?retryWrites=true&w=majority&appName=mern-project"
+    "mongodb+srv://mern:mern@mern.ldnff0d.mongodb.net/mern?retryWrites=true&w=majority&appName=mern"
   )
   .then(() => {
     console.log("Connected to MongoDB!");
@@ -13,8 +14,10 @@ mongoose
   });
 
 const app = express();
+app.use(express.json());
 app.listen(3000, () => {
   console.log("server is running on port 3000");
 });
 
-app.get("/api/user", userRouter);
+app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);

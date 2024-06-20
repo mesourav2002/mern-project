@@ -1,3 +1,4 @@
 export const test = (req, res) => {
-  res.json({ message: "Hello Word!" });
-};
+  res.json({ message: "Api is working" });
+}
+ 
