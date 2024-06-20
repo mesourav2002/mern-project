@@ -2,10 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
+import dotenv from "dotenv";
+dotenv.config();
 mongoose
-  .connect(
-    "mongodb+srv://mern:mern@mern.ldnff0d.mongodb.net/mern?retryWrites=true&w=majority&appName=mern"
-  )
+  .connect(process.env.MONGO)
   .then(() => {
     console.log("Connected to MongoDB!");
   })
@@ -29,5 +29,5 @@ app.use((err, req, res, next) => {
     success: false,
     message,
     statusCode,
-  });
+  }); 
 });
